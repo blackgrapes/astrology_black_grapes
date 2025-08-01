@@ -10,7 +10,7 @@ export default function HeroSection() {
         alt="Cosmic Background"
         fill
         quality={100}
-        className="z-0 opacity-70 object-cover w-70"
+        className="z-0 opacity-70 object-cover w-full h-full"
       />
 
       {/* Overlay Content */}
