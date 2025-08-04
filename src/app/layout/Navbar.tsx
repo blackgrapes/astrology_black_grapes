@@ -8,7 +8,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-[#29013F] text-white px-4 sm:px-8 py-4 shadow-md z-50">
+    <nav className="bg-gradient-to-b from-[#200040] to-[#0f0c29] text-white px-4 sm:px-8 py-4 shadow-md z-50 sticky top-0">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
         {/* Logo */}
         <div className="text-2xl font-bold tracking-wide text-purple-300">✴ Logo</div>
@@ -46,7 +46,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden flex flex-col bg-[#3D0E58] px-4 py-3 space-y-3">
+        <div className="md:hidden flex flex-col px-4 py-3 space-y-3">
           <Link href="/" className="hover:text-purple-400">Home</Link>
           <Link href="/features" className="hover:text-purple-400">Features</Link>
           <Link href="/contact" className="hover:text-purple-400">Contact</Link>

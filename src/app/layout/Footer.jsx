@@ -2,7 +2,7 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaGithub, FaYoutube 
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-purple-600 to-blue-500 text-white py-10 px-6">
+    <footer className="bg-gradient-to-r from-[#7357D1] to-[#0487D2]  text-white py-10 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
         
         {/* Left Section */}
