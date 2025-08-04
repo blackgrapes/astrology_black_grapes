@@ -6,7 +6,7 @@ export default function ContactPage() {
   return (
     <section className="bg-black text-white py-16 px-4 md:px-10 min-h-screen">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
-        
+
         {/* Contact Form */}
         <div className="bg-gray-900 rounded-lg shadow-lg p-8">
           <h2 className="text-2xl font-bold text-purple-400 mb-2">Get in Touch</h2>
@@ -52,12 +52,13 @@ export default function ContactPage() {
         <div className="bg-gray-900 rounded-lg shadow-lg p-8 flex flex-col items-center justify-between">
           <div className="w-full">
             <h2 className="text-2xl font-bold text-purple-400 mb-4">Our Location</h2>
-            <Image
-              src="https://www.custom-wallpaper-printing.co.uk/custom/catalog/map/world-map-shutterstock_665429155.jpg" // ⬅️ Replace with your actual image path in public folder
-              alt="Location Map"
-              width={500}
-              height={300}
-              className="rounded-lg w-full mb-6"
+            <iframe
+              src="https://www.google.com/maps/embed?pb=..."
+              className="w-full h-[300px] md:h-[400px] rounded"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
           <p className="text-sm text-gray-300 text-center">

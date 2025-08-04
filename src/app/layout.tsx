@@ -1,8 +1,7 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "./layout/Navbar";
-import Footer from "./layout/Footer";
+import type { Metadata } from "next";
+import NavbarFooterWrapper from "./layout/NavbarFooterWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,24 +13,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Astro API - Unlock the Secrets of the Cosmos",
   description: "Generate powerful astrology reports with our API.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Navbar />
-        {children}
-        <Footer />
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <NavbarFooterWrapper>
+          {children}
+        </NavbarFooterWrapper>
       </body>
     </html>
   );

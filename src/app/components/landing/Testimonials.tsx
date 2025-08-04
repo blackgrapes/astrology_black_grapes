@@ -24,8 +24,8 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-gradient-to-r from-[#3f0d75] to-[#1a1443] text-white py-16 px-14"> {/* outer background */}
-      <div className="bg-[#0D0D1F] py-16 px-4 md:px-16"> {/* inner wrapper */}
+    <section className="bg-gradient-to-r from-[#3f0d75] to-[#1a1443] text-white py-16 px-4 md:px-14">
+      <div className="bg-[#0D0D1F] py-16 px-4 md:px-16"> 
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
             What Our Clients Say
