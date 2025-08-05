@@ -1,30 +1,30 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { Download } from 'lucide-react';
 
-const reportItems = [
-  { label: 'Ascendant', value: 'Leo' },
-  { label: 'Ascendant Lord', value: 'Sun' },
-  { label: 'Varna', value: 'Kshatriya' },
-  { label: 'Vashya', value: 'Chatushpad (four–footed)' },
-  { label: 'Yoni', value: 'Mushak (Mouse)' },
-  { label: 'Gan', value: 'Deva (Divine)' },
-  { label: 'Nadi', value: 'Madhya (Middle)' },
-  { label: 'Sign', value: 'Leo' },
-  { label: 'Sign Lord', value: 'Sun' },
-  { label: 'Nakshatra', value: 'Magha' },
-  { label: 'Nakshatra Lord', value: 'Ketu' },
-  { label: 'Charan', value: '1st' },
-  { label: 'Yog', value: 'Shukla' },
-  { label: 'Karan', value: 'Bava' },
-  { label: 'Tithi', value: 'Shukla Paksha Dashami' },
-  { label: 'Yunja', value: 'Panchak (Five)' },
-  { label: 'Tatva', value: 'Fire' },
-  { label: 'Paya', value: 'Copper' },
-  { label: 'Name Alphabet', value: 'Ma, Mi, Mu, Me' },
-];
+type ReportItem = {
+  label: string;
+  value: string;
+};
 
 export default function AstrologySummaryPage() {
+  const [reportItems, setReportItems] = useState<ReportItem[]>([]);
+
+  useEffect(() => {
+    const storedData = localStorage.getItem('astro_result');
+    if (storedData) {
+      try {
+        const parsedData = JSON.parse(storedData);
+        if (Array.isArray(parsedData)) {
+          setReportItems(parsedData);
+        }
+      } catch (err) {
+        console.error('Error parsing localStorage data:', err);
+      }
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-r from-[#3f0d75] to-[#1a1443] text-white px-4 md:px-8 py-10">
       <div className="max-w-5xl mx-auto space-y-8">
@@ -64,19 +64,22 @@ export default function AstrologySummaryPage() {
         {/* Report Cards */}
         <div className="bg-[#2a0e4d] rounded-xl p-6 md:p-8 shadow-lg">
           <h2 className="text-xl font-semibold mb-6">Detailed Astrology Report</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {reportItems.map((item, index) => (
-              <div
-                key={index}
-                className="bg-[#1d1236] border border-white/10 rounded-lg p-4 hover:shadow transition"
-              >
-                <div className="text-sm text-white/70">{item.label}</div>
-                <div className="text-base font-medium">{item.value}</div>
-              </div>
-            ))}
-          </div>
+          {reportItems.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {reportItems.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-[#1d1236] border border-white/10 rounded-lg p-4 hover:shadow transition"
+                >
+                  <div className="text-sm text-white/70">{item.label}</div>
+                  <div className="text-base font-medium">{item.value}</div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-white/70">No report data found.</p>
+          )}
         </div>
-
       </div>
     </div>
   );

@@ -1,8 +1,14 @@
-// components/ContactPage.jsx
+'use client';
 
 import Image from 'next/image';
+import { FormEvent } from 'react';
 
 export default function ContactPage() {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // You can handle form logic here
+  };
+
   return (
     <section className="bg-black text-white py-16 px-4 md:px-10 min-h-screen">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
@@ -14,13 +20,14 @@ export default function ContactPage() {
             We'd love to hear from you. Send us a message!
           </p>
 
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-sm font-semibold mb-1">Name</label>
               <input
                 type="text"
                 placeholder="Your Name"
                 className="w-full rounded bg-gray-800 text-white px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                required
               />
             </div>
             <div>
@@ -29,14 +36,16 @@ export default function ContactPage() {
                 type="email"
                 placeholder="your.email@example.com"
                 className="w-full rounded bg-gray-800 text-white px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                required
               />
             </div>
             <div>
               <label className="block text-sm font-semibold mb-1">Message</label>
               <textarea
-                rows="5"
+                rows={5}
                 placeholder="Your message..."
                 className="w-full rounded bg-gray-800 text-white px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                required
               ></textarea>
             </div>
             <button
@@ -56,12 +65,12 @@ export default function ContactPage() {
               src="https://www.google.com/maps/embed?pb=..."
               className="w-full h-[300px] md:h-[400px] rounded"
               style={{ border: 0 }}
-              allowFullScreen=""
+              allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
-          <p className="text-sm text-gray-300 text-center">
+          <p className="text-sm text-gray-300 text-center mt-4">
             Reach out to integrate astrology into your platform.
           </p>
         </div>
