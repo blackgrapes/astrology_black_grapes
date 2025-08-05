@@ -4,7 +4,7 @@ import React from "react";
 // Inside your component file (e.g., pages/index.js or any other)
 import { useRouter } from 'next/navigation'; // not next/router
 
-const features = [
+const features = [ 
     {
         title: "astro details",
         description:
