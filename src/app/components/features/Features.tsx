@@ -168,5 +168,6 @@ export default function AstrologyFeatures() {
                 </div>
             </div>
         </section>
+        
     );
 }
