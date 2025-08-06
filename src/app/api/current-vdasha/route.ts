@@ -1,23 +1,32 @@
-import { NextRequest, NextResponse } from "next/server";
+// app/api/astro-details/route.ts
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
-  const { day, month, year, hour, min, lat, lon, tzone } = await req.json();
+  const body = await req.json();
+console.log(body)
+  const userId = process.env.ASTRO_API_USER_ID || '985';
+  const apiKey = process.env.ASTRO_API_KEY || '48674d952b9fc5223fb8483474c191cd';
+  console.log("User ID:", userId);
+  console.log("API Key:", apiKey);
+  const credentials = Buffer.from(`${userId}:${apiKey}`).toString('base64');
+  console.log("Credentials:", credentials)
 
-  const url = "https://json.apireports.com/v1/current-vdasha";
-  const userId = process.env.ASTRO_API_USER_ID!;
-  const apiKey = process.env.ASTRO_API_KEY!;
-
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept-Language": "en",
-      Authorization:
-        "Basic " + Buffer.from(`${userId}:${apiKey}`).toString("base64"),
-    },
-    body: JSON.stringify({ day, month, year, hour, min, lat, lon, tzone }),
-  });
-
-  const data = await response.json();
-  return NextResponse.json(data);
+  try {
+    const apiResponse = await fetch('https://json.apireports.com/v1/current_vdasha', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Basic ${credentials}`,
+        'Accept-Language': 'en',
+      },
+      body: JSON.stringify(body),
+    });
+    console.log(apiResponse)
+    const data = await apiResponse.json();
+    console.log("API Response Data:", data);
+    return NextResponse.json({ data });
+  } catch (err) {
+    console.error('Error fetching astro details:', err);
+    return NextResponse.json({ error: 'Failed to fetch astro details' }, { status: 500 });
+  }
 }
