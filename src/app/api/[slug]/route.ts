@@ -1,7 +1,10 @@
 // app/api/astro/[slug]/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(req: Request, { params }: { params: { slug: string } }) {
+export async function POST(
+  req: NextRequest,
+  { params }: { params: { slug: string } }
+) {
   const body = await req.json();
   const slug = params.slug; // e.g. astro-details, basic-astro
 
