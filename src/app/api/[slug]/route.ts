@@ -1,12 +1,8 @@
-// app/api/astro/[slug]/route.ts
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(
-  req: NextRequest,
-  { params }: { params: { slug: string } }
-) {
+export async function POST(req: NextRequest, context: { params: { slug: string } }) {
+  const { slug } = context.params;
   const body = await req.json();
-  const slug = params.slug; // e.g. astro-details, basic-astro
 
   const userId = process.env.ASTRO_API_USER_ID || '985';
   const apiKey = process.env.ASTRO_API_KEY || '48674d952b9fc5223fb8483474c191cd';
@@ -26,9 +22,13 @@ export async function POST(
     });
 
     const data = await apiResponse.json();
+
     return NextResponse.json({ data });
   } catch (err) {
     console.error(`Error fetching ${slug} data:`, err);
-    return NextResponse.json({ error: `Failed to fetch ${slug} data` }, { status: 500 });
+    return NextResponse.json(
+      { error: `Failed to fetch ${slug} data` },
+      { status: 500 }
+    );
   }
 }
