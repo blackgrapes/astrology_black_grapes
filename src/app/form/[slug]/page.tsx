@@ -2,11 +2,11 @@ import AstroForm from "@/app/components/features/form/page";
 
 // app/form/[slug]/page.tsx
 interface PageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 const FormPage = async ({ params }: PageProps) => {
-  const { slug } = params;
+  const { slug } = await params;
 
   return (
     <div>
@@ -16,3 +16,4 @@ const FormPage = async ({ params }: PageProps) => {
 };
 
 export default FormPage;
+

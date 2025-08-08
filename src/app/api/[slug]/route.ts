@@ -1,22 +1,24 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function POST(req: NextRequest, context: { params: { slug: string } }) {
-  const { slug } = context.params;
-  const body = await req.json();
+export async function POST(request: Request, context: { params: Promise<Record<string, string>> }) {
+  const _params = await context.params;
+  const slug = _params.slug;
 
-  const userId = process.env.ASTRO_API_USER_ID || '985';
-  const apiKey = process.env.ASTRO_API_KEY || '48674d952b9fc5223fb8483474c191cd';
-  const credentials = Buffer.from(`${userId}:${apiKey}`).toString('base64');
+  const body = await request.json();
+
+  const userId = process.env.ASTRO_API_USER_ID || "985";
+  const apiKey = process.env.ASTRO_API_KEY || "48674d952b9fc5223fb8483474c191cd";
+  const credentials = Buffer.from(`${userId}:${apiKey}`).toString("base64");
 
   const apiUrl = `https://json.apireports.com/v1/${slug}`;
 
   try {
     const apiResponse = await fetch(apiUrl, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Basic ${credentials}`,
-        'Accept-Language': 'en',
+        "Content-Type": "application/json",
+        Authorization: `Basic ${credentials}`,
+        "Accept-Language": "en",
       },
       body: JSON.stringify(body),
     });
