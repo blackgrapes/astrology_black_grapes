@@ -4,8 +4,8 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(req: NextRequest) {
   const body = await req.json();
 console.log(body)
-  const userId = process.env.ASTRO_API_USER_ID || '985';
-  const apiKey = process.env.ASTRO_API_KEY || '48674d952b9fc5223fb8483474c191cd';
+  const userId = process.env.ASTRO_API_USER_ID || '987';
+  const apiKey = process.env.ASTRO_API_KEY || 'b8a14b9ec11a79fce2a3c7331b289981';
   console.log("User ID:", userId);
   console.log("API Key:", apiKey);
   const credentials = Buffer.from(`${userId}:${apiKey}`).toString('base64');
