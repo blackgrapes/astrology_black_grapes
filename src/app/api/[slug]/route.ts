@@ -6,8 +6,8 @@ export async function POST(request: Request, context: { params: Promise<Record<s
 
   const body = await request.json();
 
-  const userId = process.env.ASTRO_API_USER_ID || "985";
-  const apiKey = process.env.ASTRO_API_KEY || "48674d952b9fc5223fb8483474c191cd";
+  const userId = process.env.ASTRO_API_USER_ID || "987";
+  const apiKey = process.env.ASTRO_API_KEY || "b8a14b9ec11a79fce2a3c7331b289981";
   const credentials = Buffer.from(`${userId}:${apiKey}`).toString("base64");
 
   const apiUrl = `https://json.apireports.com/v1/${slug}`;
