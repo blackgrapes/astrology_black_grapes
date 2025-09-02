@@ -164,21 +164,21 @@ const AstroForm: React.FC<AstroFormProps> = ({ endpoint }) => {
                         <input
                             name="day"
                             required
-                            placeholder="DD"
+                            placeholder="Day "
                             onChange={handleChange}
                             className="input"
                         />
                         <input
                             name="month"
                             required
-                            placeholder="MM"
+                            placeholder="Month 01, 12"
                             onChange={handleChange}
                             className="input"
                         />
                         <input
                             name="year"
                             required
-                            placeholder="YYYY"
+                            placeholder="Year Ex 2003"
                             onChange={handleChange}
                             className="input"
                         />
@@ -212,14 +212,14 @@ const AstroForm: React.FC<AstroFormProps> = ({ endpoint }) => {
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input name="day" required placeholder="DD" onChange={handleChange} className="input" />
-                        <input name="month" required placeholder="MM" onChange={handleChange} className="input" />
-                        <input name="year" required placeholder="YYYY" onChange={handleChange} className="input" />
-                        <input name="hour" required placeholder="HH (24-hour)" onChange={handleChange} className="input" />
-                        <input name="minute" required placeholder="MM" onChange={handleChange} className="input" />
-                        <input name="latitude" required placeholder="e.g., 28.6139" onChange={handleChange} className="input" />
-                        <input name="longitude" required placeholder="e.g., 77.2090" onChange={handleChange} className="input" />
-                        <input name="timezone" required placeholder="e.g., 5.5" onChange={handleChange} className="input" />
+                        <input name="day" required placeholder="Day " onChange={handleChange} className="input" />
+                        <input name="month" required placeholder="Month Ex 01 12" onChange={handleChange} className="input" />
+                        <input name="year" required placeholder="Year Ex 2010" onChange={handleChange} className="input" />
+                        <input name="hour" required placeholder="Hour (24-hour)" onChange={handleChange} className="input" />
+                        <input name="minute" required placeholder="Minute Ex 35" onChange={handleChange} className="input" />
+                        <input name="latitude" required placeholder="Latitude Ex 28.6139" onChange={handleChange} className="input" />
+                        <input name="longitude" required placeholder="Longitude Ex 77.2090" onChange={handleChange} className="input" />
+                        <input name="timezone" required placeholder="Timezone Ex 5.5" onChange={handleChange} className="input" />
                     </div>
                 )}
 
