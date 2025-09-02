@@ -216,7 +216,7 @@ export default function AstrologySummaryPage() {
           <div className="bg-[#2a0e4d] rounded-xl p-6 md:p-8 shadow-lg">
             <h2 className="text-xl font-semibold mb-4">Horo Chart (Visual Representation)</h2>
             <div
-              className="w-full overflow-auto rounded-lg p-4 bg-[#1d1236]/50"
+              className="w-full overflow-auto rounded-lg p-4 bg-[#1d1236]/50 bg-white"
               dangerouslySetInnerHTML={{ __html: svgContent }}
             />
           </div>
