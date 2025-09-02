@@ -6,11 +6,11 @@ export async function POST(request: Request, context: { params: Promise<Record<s
 
   const body = await request.json();
 
-  const userId = process.env.ASTRO_API_USER_ID || "987";
-  const apiKey = process.env.ASTRO_API_KEY || "b8a14b9ec11a79fce2a3c7331b289981";
+  const userId = process.env.ASTRO_API_USER_ID || "644620";
+  const apiKey = process.env.ASTRO_API_KEY || "f07447ed6ee12259b5314545c128ab8471739f0d";
   const credentials = Buffer.from(`${userId}:${apiKey}`).toString("base64");
 
-  const apiUrl = `https://json.apireports.com/v1/${slug}`;
+  const apiUrl = `https://json.astrologyapi.com/v1/${slug}`;
 
   try {
     const apiResponse = await fetch(apiUrl, {
