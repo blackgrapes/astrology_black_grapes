@@ -209,7 +209,7 @@ const AstroForm: React.FC<AstroFormProps> = ({ endpoint }) => {
                                 placeholder="Is DST (true/false)"
                             />
                         </div>
-                    </div>
+                    </div> // my code
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <input name="day" required placeholder="Day " onChange={handleChange} className="input" />
